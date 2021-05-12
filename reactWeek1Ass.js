@@ -1,4 +1,3 @@
-'use strict';
 
 class Student {
     constructor(name, email, community){
@@ -13,14 +12,14 @@ class Bootcamp {
         this.name = name;
         this.level = level;
         this.students = students;
-
-        if(students == 'undefined'){
-            students == 'none'
-        }
     }
-
     registerStudent(student){
-        
+        if(this.students.includes(student)){
+            console.log(`Student is already registered`);
+        } else {
+            this.students.push(student)
+            console.log(`Student has registered`);
+        }
     }
 }
 
