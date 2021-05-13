@@ -52,29 +52,29 @@ class Directory extends Component {
                 <div className="row">
                     {directory}
                 </div>
-                <ExampleChildComponent />
+                {/* <ExampleChildComponent /> */}
             </div>
         );
     }
 }
 
 // delete later
-class ExampleParentComponent extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            number: 333
-        }
-    }
-    render() {
-        return <ExampleChildComponent number={this.state.number} />;
-    }
+// class ExampleParentComponent extends Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             number: 333
+//         }
+//     }
+//     render() {
+//         return <ExampleChildComponent number={this.state.number} />;
+//     }
     
-}
+// }
 
-class ExampleChildComponent extends Component{
-    render(){
-        return <div>{this.props.number}</div>
-    }
-}
+// class ExampleChildComponent extends Component{
+//     render(){
+//         return <div>{this.props.number}</div>
+//     }
+// }
 export default Directory;
