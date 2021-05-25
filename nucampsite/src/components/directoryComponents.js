@@ -13,7 +13,7 @@ function RenderDirectoryItem({campsite}){
         </Card>
     )
 }
-
+//where is your navbar brand
 
 function Directory(props) {
  
@@ -36,7 +36,7 @@ function Directory(props) {
         const directory = props.campsites.map(campsite => {
             return(
                 <div key={campsite.id} className="col-md-5 m-1">
-                    <RenderDirectoryItem campsite={campsite}                                                                                             />
+                    <RenderDirectoryItem campsite={campsite}                                                                     />
                 </div>
             )
         })
