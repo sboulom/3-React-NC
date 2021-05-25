@@ -5,11 +5,13 @@ import Header from './headerComponent';
 import Footer from './footerComponent'
 import Home from './homeComponent';
 import Contact from './contactComponent';
+import About from './aboutComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { CAMPSITES } from '../shared/campsites';
 import { COMMENTS } from '../shared/comments';
 import { PARTNERS } from '../shared/partners';
 import { PROMOTIONS } from '../shared/promotions';
+
 
 class Main extends Component {
     constructor(props) {
@@ -51,6 +53,7 @@ class Main extends Component {
                     <Route exact path = '/directory' render= { ()=> <Directory campsites ={this.state.campsites} />
                     } />
                     <Route path='directory/:campsiteId' component={CampsiteWithId} />
+                    <Route path='/about' render={()=><About partners={this.state.partners}/>} />
                     <Route exact path = '/contactus' component={Contact} />
                     <Redirect to='/home' />
                 </Switch>
