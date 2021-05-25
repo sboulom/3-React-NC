@@ -2,7 +2,6 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
 function About(props) {
     const partners = props.partners.map(partner => {
         return (
@@ -11,7 +10,6 @@ function About(props) {
            </Media>
         );
     });
-
     function RenderPartner({partner}){
         if (partner) {
             return(
@@ -27,7 +25,6 @@ function About(props) {
             )
         }
     }
-
     return (
         <div className="container">
             <div className="row">

@@ -12,7 +12,6 @@ import { COMMENTS } from '../shared/comments';
 import { PARTNERS } from '../shared/partners';
 import { PROMOTIONS } from '../shared/promotions';
 
-
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +22,6 @@ class Main extends Component {
             promotions: PROMOTIONS
         };
     }
-   
     render() {
         const HomePage = () => {
             return(
@@ -39,7 +37,7 @@ class Main extends Component {
                 <CampsiteInfo 
                     campsite={this.state.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
                     comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)} 
-                    />
+                />
             );
         } 
         return (

@@ -13,8 +13,6 @@ function RenderDirectoryItem({campsite}){
         </Card>
     )
 }
-//where is your navbar brand
-
 function Directory(props) {
  
     // rendereSelectedCampsite(campsite){
@@ -31,8 +29,6 @@ function Directory(props) {
     //     } 
     //     return <div />
     // }
-
- 
         const directory = props.campsites.map(campsite => {
             return(
                 <div key={campsite.id} className="col-md-5 m-1">
@@ -54,19 +50,16 @@ function Directory(props) {
                 </div>
                 <div className="row">
                     {directory}
-
                 </div>
                 {/* <div className="row">
                     <div className="col-md-5 m-1">
                         {this.rendereSelectedCampsite(this.state.selectedCampsite)}
                     </div>
-                </div> */}
-               
+                </div> */} 
             </div>
         );
     
 }
-
 // delete later
 // class ExampleParentComponent extends Component {
 //     constructor(props){
@@ -78,9 +71,7 @@ function Directory(props) {
 //     render() {
 //         return <ExampleChildComponent number={this.state.number} />;
 //     }
-    
 // }
-
 // class ExampleChildComponent extends Component{
 //     render(){
 //         return <div>{this.props.number}</div>
