@@ -1,7 +1,104 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, Button, CardImg, CardText, CardBody, CardTitle, Modal, ModalBody, ModalHeader, Label, Row,  Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
- 
+import { Control, Errors, LocalForm } from 'react-redux-form';
+
+const required = val => val && val.length;
+const maxLength = len => val => !val || (val.length <= len);
+const minLength = len => val => val && (val.length >= len);
+
+class CommentForm extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            isModalOpen: false
+        }
+        this.toggleModal=this.toggleModal.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
+    }
+    toggleModal(){
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+    handleSubmit(values){
+        console.log("Current state is: " + JSON.stringify(values));
+        alert("Current state is: " + JSON.stringify(values));
+    }
+    
+    render(){
+        return(
+            <div>
+            <Button type="submit" outline onClick={this.toggleModal} md={2} className="fa fa-pencil fa-lg "> Submit Comment</Button>
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+                <ModalBody>
+                <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                    <Row className="form-group">
+                        <Label htmlFor="rating" md={2}>Rating</Label>
+                        <Control.select model=".rating" id="rating" name="rating" className="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </Control.select>
+                    </Row>
+                    <Row className="form-group">
+                        <Label htmlFor="author md={2}">Your Name</Label>
+                        <Control.text model=".author" id="author" name="author"
+                            placeholder="Your Name" 
+                            className="form-control"
+                            validators={{
+                                required,
+                                minLength: minLength(2),
+                                maxLength: maxLength(15)
+                            }}
+                            />
+                       <Errors
+                            className="text-danger"
+                            model=".author"
+                            show="touched"
+                            component="div"
+                                messages={{
+                                    required: 'Required',
+                                    minLength: 'Must be at least 2 characters',
+                                    maxLength: 'Must be 15 characters or less'
+                                }}
+                        />
+                    </Row>
+                    <Row className="form-group">
+                        <Label htmlFor="text md={2}">Comment</Label>
+                        <Control.textarea model=".text" id="text" name="text"
+                            className="form-control"
+                            validators={{
+                                required,
+                                minLength: minLength(1),
+                                maxLength: maxLength(40)
+                            }}
+                            />
+                       <Errors
+                            className="text-danger"
+                            model=".text"
+                            show="touched"
+                            component="div"
+                                messages={{
+                                    required: 'Required',
+                                    minLength: 'Must be at least 1 characters',
+                                    maxLength: 'Must be 40 characters or less'
+                                }}
+                        />
+                    </Row>
+                    <div className="form-group">
+                        <Button type="submit" value="submit" color="primary" md={2}>Submit</Button>
+                    </div>
+                </LocalForm>
+                </ModalBody>
+            </Modal>
+            </div>
+        )
+    };
+};
     function RenderCampsite({campsite}){
         return(
             <div className='col-md-5 m-1'>
@@ -29,6 +126,7 @@ import { Link } from 'react-router-dom';
                         </div>
                     )
                 })}
+                <CommentForm />
             </div>)
         }
     }
