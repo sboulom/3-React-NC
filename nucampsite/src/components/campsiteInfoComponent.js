@@ -89,7 +89,8 @@ class CommentForm extends Component{
                                 }}
                         />
                     </Row>
-                    <div className="form-group">
+                    {/* margin */}
+                    <div className="form-group" className="mt-3">
                         <Button type="submit" value="submit" color="primary" md={2}>Submit</Button>
                     </div>
                 </LocalForm>
