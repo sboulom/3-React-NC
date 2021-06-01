@@ -99,10 +99,10 @@ class Header extends Component {
                                     innerRef={input => this.remember = input}/>
                                     Remember me
                                 </Label>
-                                <Input type="text" id ="username" name="username" />
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
+                            <Input type="text" id ="username" name="username" />
                         </Form>
+                            <Button type="submit" value="submit" color="primary">Login</Button>
                     </ModalBody>
                 </Modal>
 
