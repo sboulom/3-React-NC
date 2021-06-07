@@ -1,7 +1,8 @@
-import React, { Component }from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
+import React, { Component } from 'react';
+import { Breadcrumb, BreadcrumbItem,
+    Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
@@ -12,7 +13,6 @@ const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 class Contact extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             firstName: '',
             lastName: '',
@@ -28,18 +28,13 @@ class Contact extends Component {
                 email: false
             }
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
     handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        this.props.postFeedback(values);
         this.props.resetFeedbackForm();
     }
-    
     render() {
-
         return (
             <div className="container">
                 <div className="row">
@@ -52,7 +47,6 @@ class Contact extends Component {
                         <hr />
                     </div>
                 </div>
-
                 <div className="row row-content align-items-center">
                     <div className="col-sm-4">
                         <h5>Our Address</h5>
@@ -67,6 +61,7 @@ class Contact extends Component {
                         <a role="button" className="btn btn-link" href="mailto:fakeemail@fakeemail.co"><i className="fa fa-envelope-o" /> campsites@nucamp.co</a>
                     </div>
                 </div>
+​
                 <div className="row row-content">
                     <div className="col-12">
                         <h2>Send us your Feedback</h2>
@@ -204,7 +199,7 @@ class Contact extends Component {
                                     />
                                 </Col>
                             </Row>
-                            <Row className="form-group" className="mt-3">
+                            <Row className="form-group">
                                 <Col md={{size: 10, offset: 2}}>
                                     <Button type="submit" color="primary">
                                         Send Feedback
@@ -217,7 +212,5 @@ class Contact extends Component {
             </div>
         );
     }
-        
 }
-
 export default Contact;
